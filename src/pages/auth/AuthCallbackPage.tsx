@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
 
+import { AuthErrorState, AuthLoadingState } from '@/features/auth/components';
 import { supabase } from '@/lib';
 
 export default function AuthCallbackPage() {
@@ -58,33 +59,15 @@ export default function AuthCallbackPage() {
   }, [navigate]);
 
   if (loading) {
-    return (
-      <div className="flex min-h-screen items-center justify-center">
-        <div className="text-center">
-          <div className="mb-4 inline-block h-12 w-12 animate-spin rounded-full border-4 border-solid border-green-600 border-r-transparent"></div>
-          <h2 className="text-xl font-semibold">Autenticando...</h2>
-          <p className="text-gray-600">Por favor, aguarde.</p>
-        </div>
-      </div>
-    );
+    return <AuthLoadingState />;
   }
 
   if (error) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <div className="rounded-lg bg-red-50 p-6 text-center">
-          <h2 className="mb-2 text-xl font-semibold text-red-800">
-            Erro na autenticação
-          </h2>
-          <p className="mb-4 text-red-600">{error}</p>
-          <button
-            onClick={() => navigate('/', { replace: true })}
-            className="rounded-lg bg-red-600 px-4 py-2 font-medium text-white hover:bg-red-700"
-          >
-            Voltar para o login
-          </button>
-        </div>
-      </div>
+      <AuthErrorState
+        message={error}
+        onRetry={() => navigate('/', { replace: true })}
+      />
     );
   }
 

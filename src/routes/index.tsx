@@ -2,7 +2,8 @@ import { lazy } from 'react';
 
 import { createBrowserRouter } from 'react-router-dom';
 
-import { AuthLayout, PrivateLayout } from '@/components/layouts';
+import { PrivateLayout } from '@/components/layouts';
+import { AuthLayout } from '@/features/auth';
 
 const LoginPage = lazy(() => import('@/pages/auth/LoginPage'));
 const AuthCallbackPage = lazy(() => import('@/pages/auth/AuthCallbackPage'));
