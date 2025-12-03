@@ -8,7 +8,6 @@ import { AuthLayout } from '@/features/auth';
 const LoginPage = lazy(() => import('@/pages/auth/LoginPage'));
 const AuthCallbackPage = lazy(() => import('@/pages/auth/AuthCallbackPage'));
 const DashboardPage = lazy(() => import('@/pages/dashboard/DashboardPage'));
-const UserEditPage = lazy(() => import('@/pages/user/UserEditPage'));
 
 export const router = createBrowserRouter([
   {
@@ -33,10 +32,6 @@ export const router = createBrowserRouter([
       {
         path: 'dashboard',
         element: <DashboardPage />,
-      },
-      {
-        path: 'user/edit',
-        element: <UserEditPage />,
       },
     ],
   },
