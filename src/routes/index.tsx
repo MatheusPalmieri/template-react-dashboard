@@ -4,9 +4,10 @@ import { createBrowserRouter } from 'react-router-dom';
 
 import { AuthLayout, PrivateLayout } from '@/components/layouts';
 
-const HomePage = lazy(() => import('@/pages/home'));
 const LoginPage = lazy(() => import('@/pages/auth/LoginPage'));
 const AuthCallbackPage = lazy(() => import('@/pages/auth/AuthCallbackPage'));
+const DashboardPage = lazy(() => import('@/pages/dashboard/DashboardPage'));
+const UserEditPage = lazy(() => import('@/pages/user/UserEditPage'));
 
 export const router = createBrowserRouter([
   {
@@ -29,8 +30,12 @@ export const router = createBrowserRouter([
     element: <PrivateLayout />,
     children: [
       {
-        path: 'home',
-        element: <HomePage />,
+        path: 'dashboard',
+        element: <DashboardPage />,
+      },
+      {
+        path: 'user/edit',
+        element: <UserEditPage />,
       },
     ],
   },

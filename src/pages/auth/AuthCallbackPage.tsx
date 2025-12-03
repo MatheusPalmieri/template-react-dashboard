@@ -37,11 +37,11 @@ export default function AuthCallbackPage() {
               }, 500);
             } catch {
               // If we can't access opener (cross-origin), just redirect normally
-              navigate('/home', { replace: true });
+              navigate('/dashboard', { replace: true });
             }
           } else {
             // Normal redirect if no opener window
-            navigate('/home', { replace: true });
+            navigate('/dashboard', { replace: true });
           }
         } else {
           setError('No session found. Please try again.');
